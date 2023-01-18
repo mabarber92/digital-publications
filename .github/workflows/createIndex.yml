@@ -56,7 +56,7 @@ jobs:
             openitiPath = 'src= "https://openiti.org/assets'
             mystr = re.sub(r'src\s?=\s?"/assets', openitiPath, mystr)
             
-            newInner = <main> + str(dirs) + </main>
+            newInner = '<main>' + str(dirs) + '</main>'
             mystr = re.sub(r'<main.*/main>', newInner, mystr)
             
             
