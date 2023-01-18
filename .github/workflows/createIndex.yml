@@ -40,7 +40,7 @@ jobs:
             fp.close()
             
             openitiPath = 'https://openiti.org/assets'
-            mystr = re.sub(mstr(r'^/assets', openitiPath, mystr)
+            mystr = re.sub(r'^/assets', openitiPath, mystr)
             
             with open('index.html', 'w') as f:
               f.write(mystr)
