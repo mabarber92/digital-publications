@@ -27,5 +27,10 @@ jobs:
           script: |
             import os
             print("Directory contents:")
+            dirs = []
             for f in os.listdir():
-                print(f)
+                dirs.append(f)
+            with open('index.html' 'w') as f:
+              f.write(dirs)
+              f.close()
+            
