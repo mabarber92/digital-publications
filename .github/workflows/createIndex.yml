@@ -37,7 +37,7 @@ jobs:
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.ACTIONS_ACCESS }}
           branch: main
           force: true
           message: 'Overwritten by Github Actions - ${date}'
