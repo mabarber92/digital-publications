@@ -26,16 +26,20 @@ jobs:
         with:
           script: |
             import os
+            import urllib.request
             print("Directory contents:")
             dirs = []
             for f in os.listdir():
                 dirs.append(f)
             print(str(dirs))
-            with open('https://openiti.org/', 'r') as f:
-              siteHtml = f.read()        
-              f.close()
+      
+            fp = urllib.request.urlopen("https://openiti.org/")
+            mybytes = fp.read()
+            mystr = mybytes.decode("utf8")
+            fp.close()
+            
             with open('index.html', 'w') as f:
-              f.write(siteHtml)
+              f.write(mystr)
               f.close()
       - name: Commit & Push
         uses: Andro999b/push@v1.3
