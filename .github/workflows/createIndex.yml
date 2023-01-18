@@ -27,6 +27,7 @@ jobs:
           script: |
             import os
             import urllib.request
+            import re
             print("Directory contents:")
             dirs = []
             for f in os.listdir():
@@ -37,6 +38,9 @@ jobs:
             mybytes = fp.read()
             mystr = mybytes.decode("utf8")
             fp.close()
+            
+            openitiPath = 'https://openiti.org/assets'
+            mystr = re.sub(mstr(r'^/assets', openitiPath, mystr)
             
             with open('index.html', 'w') as f:
               f.write(mystr)
