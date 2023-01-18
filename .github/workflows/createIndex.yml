@@ -31,8 +31,15 @@ jobs:
             for f in os.listdir():
                 dirs.append(f)
             print(str(dirs))
-            with open('index.html', 'r') as f:
-              text = f.read()
+            with open('index.html', 'w') as f:
+              f.write(str(dirs))
               print(text)
               f.close()
+      - name: Commit & Push
+      - uses: Andro999b/push@v1.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true
+          message: 'Overwritten by Github Actions - ${date}'
             
