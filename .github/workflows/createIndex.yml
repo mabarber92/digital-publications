@@ -57,7 +57,7 @@ jobs:
             mystr = re.sub(r'src\s?=\s?"/assets', openitiPath, mystr)
             
             newInner = '<main>' + str(dirs) + '</main>'
-            mystr = re.sub(r'<main.*/main>', newInner, mystr)
+            mystr = re.sub(r'<main.*/main>', newInner, mystr, re.DOTALL)
             
             
             with open('index.html', 'w') as f:
