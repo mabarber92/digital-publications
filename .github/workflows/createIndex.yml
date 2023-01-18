@@ -39,8 +39,8 @@ jobs:
             mystr = mybytes.decode("utf8")
             fp.close()
             
-            openitiPath = 'https://openiti.org/assets'
-            mystr = re.sub(r'^/assets', openitiPath, mystr)
+            openitiPath = 'href= "https://openiti.org/assets'
+            mystr = re.sub(r'href="/assets', openitiPath, mystr)
             
             with open('index.html', 'w') as f:
               f.write(mystr)
