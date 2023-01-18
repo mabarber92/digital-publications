@@ -30,6 +30,7 @@ jobs:
             dirs = []
             for f in os.listdir():
                 dirs.append(f)
+            print(str(dirs))
             with open('index.html', 'w') as f:
               f.write(str(dirs))
               f.close()
