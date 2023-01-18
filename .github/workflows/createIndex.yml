@@ -32,8 +32,7 @@ jobs:
                 dirs.append(f)
             print(str(dirs))
             with open('index.html', 'w') as f:
-              f.write(str(dirs))
-              print(text)
+              f.write(str(dirs))            
               f.close()
       - name: Commit & Push
         uses: Andro999b/push@v1.3
