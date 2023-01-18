@@ -51,7 +51,12 @@ jobs:
             fp.close()
             
             openitiPath = 'href= "https://openiti.org/assets'
-            mystr = re.sub(r'href="/assets', openitiPath, mystr)
+            mystr = re.sub(r'href\s?=\s?"/assets', openitiPath, mystr)
+            
+            openitiPath = 'src= "https://openiti.org/assets'
+            mystr = re.sub(r'src\s?=\s?"/assets', openitiPath, mystr)
+            
+            
             
             with open('index.html', 'w') as f:
               f.write(mystr)
