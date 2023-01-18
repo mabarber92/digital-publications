@@ -31,8 +31,11 @@ jobs:
             for f in os.listdir():
                 dirs.append(f)
             print(str(dirs))
+            with open('https://openiti.org/', 'r') as f:
+              siteHtml = f.read()        
+              f.close()
             with open('index.html', 'w') as f:
-              f.write(str(dirs))            
+              f.write(siteHtml)
               f.close()
       - name: Commit & Push
         uses: Andro999b/push@v1.3
