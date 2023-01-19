@@ -36,7 +36,7 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            from scripts/formatPages.py import formatPages
+            from scripts\formatPages.py import formatPages
             formatPages()
       - name: Commit & Push
         uses: Andro999b/push@v1.3
