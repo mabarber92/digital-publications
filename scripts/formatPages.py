@@ -128,7 +128,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
         f.write(authorIndexHtml)
         f.close()
 
-if __name__ == '__formatPages__':
+if __name__ == '__main__':
     formatPages()
             
         
