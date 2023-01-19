@@ -36,33 +36,8 @@ jobs:
       - uses: jannekem/run-python-script-action@v1
         with:
           script: |
-            import os
-            import urllib.request
-            import re
-            print("Directory contents:")
-            dirs = []
-            for f in os.listdir():
-                dirs.append(f)
-            print(str(dirs))
-      
-            fp = urllib.request.urlopen("https://openiti.org/")
-            mybytes = fp.read()
-            mystr = mybytes.decode("utf8")
-            fp.close()
-            
-            openitiPath = 'href= "https://openiti.org/assets'
-            mystr = re.sub(r'href\s?=\s?"/assets', openitiPath, mystr)
-            
-            openitiPath = 'src= "https://openiti.org/assets'
-            mystr = re.sub(r'src\s?=\s?"/assets', openitiPath, mystr)
-            
-            newInner = '<main>' + str(dirs) + '</main>'
-            mystr = re.sub(r'<main.*/main>', newInner, mystr, re.DOTALL)
-            print(mystr)
-            
-            with open('index.html', 'w') as f:
-              f.write(mystr)
-              f.close()
+            from scripts/formatPages.py import formatPages
+            formatPages()
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
