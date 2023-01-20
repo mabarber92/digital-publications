@@ -8,7 +8,8 @@ on:
 jobs:
   call-build-workflow:
      uses: ./.github/workflows/buildPages.yml
-     secrets: inherit
+     secrets:
+      envPAT: ${{secrets.actions-env}}
   call-deploy-workflow:
     needs: call-build-workflow
     uses: ./.github/workflows/static.yml
