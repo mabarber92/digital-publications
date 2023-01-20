@@ -22,6 +22,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
                 regex = folder + ".*\.html"
                 if re.search(regex, file):                    
                     fileList.append(file)
+            fileList = sorted(fileList)
             dirDict[folder] = fileList
     print(dirDict)
 
