@@ -6,5 +6,7 @@ on:
       - main
 
 jobs:
-  call-workflow:
+  call-build-workflow:
+     uses: ./.github/workflows/buildPages.yml
+  call-deploy-workflow:
     uses: ./.github/workflows/static.yml
