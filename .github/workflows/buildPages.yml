@@ -1,0 +1,24 @@
+name: Run python script to build pages
+
+on:
+  workflow_call:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      
+      - name: Run Python Script
+        run: python scripts/formatPages.py
+            
+      - name: Commit & Push
+        uses: Andro999b/push@v1.3
+        with:
+          github_token: ${{ secrets.ACTIONS_ACCESS }}
+          branch: main
+          force: true
+          message: 'Overwritten by Github Actions - ${date}'
