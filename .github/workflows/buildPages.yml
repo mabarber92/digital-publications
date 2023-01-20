@@ -2,6 +2,9 @@ name: Run python script to build pages
 
 on:
   workflow_call:
+    secrets:
+      token:
+        required: true
   
 jobs:
   build:
@@ -18,7 +21,7 @@ jobs:
       - name: Commit & Push
         uses: Andro999b/push@v1.3
         with:
-          github_token: ${{ secrets.ACTIONS_ACCESS }}
+          github_token: ${{ secrets.token }}
           branch: main
           force: true
           message: 'Overwritten by Github Actions - ${date}'
