@@ -115,12 +115,13 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             preMainHtmlDocumentIndex = re.sub(twitterTitle, newTitle, preMainHtmlDocumentIndex)
         
         documentIndex = [preMainHtmlDocumentIndex, '<main class="page-content" aria-label="Content">', '<div class="index inner">', documentIndexTitle]
-        authorPage = '{}/authors/{}'.format(publicationsBaseUrl, author)
+        authorPage = './authors/{}/index.html'.format(author)
+        authorLink = '{}/authors/{}'.format(publicationsBaseUrl, author)
         authorLinkHtml = '''<h3 class="entry-title">
             <a href="{}" class="more-link">{}<span class="icon icon--arrow-right">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
             <path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/>
-            </svg></span></a></h3>'''.format(authorPage,author)
+            </svg></span></a></h3>'''.format(authorLink,author)
         authorIndex.append(authorLinkHtml)
         for document in dirDict[author]:
             documentName = ".".join(document.split(".")[1:3])
@@ -141,7 +142,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
                         <path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/>
                         </svg></span>
                           {}</h2>
-                          </header>'''.format(authorPage, author, documentName)
+                          </header>'''.format(authorLink, author, documentName)
             
             documentPath = os.path.join(dataDir, "{}/{}".format(author, document))
             with open(documentPath, "r", encoding='utf-8-sig') as f:                
