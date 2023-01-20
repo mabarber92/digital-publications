@@ -136,7 +136,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             ## NEED TO WRAP DOCUMENT PAGE HERE AND OUTPUT
             documentTitle = '''<header class="section-title">
                           <h2>
-                          <a href="{})">{}</a>
+                          <a href="{}">{}</a>
                           <span class="icon icon--arrow-right">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
                         <path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/>
