@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 
-def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", staticTemplate = None):
+def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", publicationsBaseUrl = "https://mabarber92.github.io/digital-publications", staticTemplate = None):
     import os
     import re
     import urllib.request
-    
+  
     currentDir = os.getcwd()
     dataDir = os.path.join(currentDir, "authors")
     print(dataDir)
@@ -95,13 +95,13 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
     for author in dirDict.keys():
         documentIndexTitle = '''<header class="section-title">
                           <h2>
-                          <a href="javascript:history.go(-1)">Digital Publications</a>
+                          <a href={}>Digital Publications</a>
                           <span class="icon icon--arrow-right">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
                         <path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/>
                         </svg></span>
                           {}</h2>
-                          </header>'''.format(author)
+                          </header>'''.format(publicationsBaseUrl, author)
         # Edit page metadata to reflex page
         preMainHtmlDocumentIndex = preMainHtml[:]
         if htmlTitle:
@@ -115,7 +115,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             preMainHtmlDocumentIndex = re.sub(twitterTitle, newTitle, preMainHtmlDocumentIndex)
         
         documentIndex = [preMainHtmlDocumentIndex, '<main class="page-content" aria-label="Content">', '<div class="index inner">', documentIndexTitle]
-        authorPage = './authors/{}/index.html'.format(author)
+        authorPage = '{}/authors/{}'.format(publicationsBaseUrl, author)
         authorLinkHtml = '''<h3 class="entry-title">
             <a href="{}" class="more-link">{}<span class="icon icon--arrow-right">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
@@ -135,13 +135,13 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             ## NEED TO WRAP DOCUMENT PAGE HERE AND OUTPUT
             documentTitle = '''<header class="section-title">
                           <h2>
-                          <a href="javascript:history.go(-1)">{}</a>
+                          <a href="{})">{}</a>
                           <span class="icon icon--arrow-right">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
                         <path d="M63.1-107.7l-6.7-6.7c-.2-.3-.6-.4-.9-.4-.4 0-.7.1-.9.4l-.8.8c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l5 5-5 5c-.3.3-.4.6-.4.9 0 .4.1.7.4.9l.8.8c.3.3.6.4.9.4.4 0 .7-.1.9-.4l6.7-6.7c.3-.3.4-.6.4-.9 0-.4-.2-.7-.4-.9z"/>
                         </svg></span>
                           {}</h2>
-                          </header>'''.format(author, documentName)
+                          </header>'''.format(authorPage, author, documentName)
             
             documentPath = os.path.join(dataDir, "{}/{}".format(author, document))
             with open(documentPath, "r", encoding='utf-8-sig') as f:                
