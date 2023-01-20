@@ -1,0 +1,10 @@
+name: Full Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/static.yml
