@@ -3,13 +3,7 @@ name: Deploy static content to Pages
 
 on:
   workflow_call:
-    inputs:
-      config-path:
-        required: true
-        type: string
-    secrets:
-      envPAT:
-        required: true
+
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
