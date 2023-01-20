@@ -19,7 +19,8 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
         if os.path.isdir(path):
             fileList = []
             for file in os.listdir(path):
-                if re.search(r".*\.html", file):                    
+                regex = folder + ".*\.html"
+                if re.search(regex, file):                    
                     fileList.append(file)
             dirDict[folder] = fileList
     print(dirDict)
