@@ -189,7 +189,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             f.close()
     authorIndex.extend(['</div>', '</main>', postMainHtml])
     authorIndexHtml = "\n".join(authorIndex)
-    with open("index.html", "w") as f:
+    with open("authors/index.html", "w") as f:
         f.write(authorIndexHtml)
         f.close()
 
