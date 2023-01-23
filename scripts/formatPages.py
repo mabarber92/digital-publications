@@ -7,6 +7,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
     import urllib.request
   
     currentDir = os.getcwd()
+    print(currentDir)
     dataDir = os.path.join(currentDir, "data")
     print(dataDir)
     
