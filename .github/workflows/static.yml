@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload authors part of repository
-          path: 'authors'
+          path: 'data'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
