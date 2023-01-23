@@ -7,7 +7,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
     import urllib.request
   
     currentDir = os.getcwd()
-    dataDir = os.path.join(currentDir, "authors")
+    dataDir = os.path.join(currentDir, "data")
     print(dataDir)
     
     # Create a dictionary where keys are the parent dir for the book and values are a list of links
@@ -116,8 +116,8 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             preMainHtmlDocumentIndex = re.sub(twitterTitle, newTitle, preMainHtmlDocumentIndex)
         
         documentIndex = [preMainHtmlDocumentIndex, '<main class="page-content" aria-label="Content">', '<div class="index inner">', documentIndexTitle]
-        authorPage = './authors/{}/index.html'.format(author)
-        authorLink = '{}/authors/{}'.format(publicationsBaseUrl, author)
+        authorPage = './data/{}/index.html'.format(author)
+        authorLink = '{}/{}'.format(publicationsBaseUrl, author)
         authorLinkHtml = '''<h3 class="entry-title">
             <a href="{}" class="more-link">{}<span class="icon icon--arrow-right">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="50.4 -114.8 16 16">
@@ -126,7 +126,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
         authorIndex.append(authorLinkHtml)
         for document in dirDict[author]:
             documentName = ".".join(document.split(".")[1:3])
-            documentPage = "./{}".format(document)
+            documentPage = "./{}".format(documentName)
             
             documentLinkHtml = '''<h3 class="entry-title">
             <a href="{}" class="more-link">{}<span class="icon icon--arrow-right">
@@ -145,7 +145,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
                           {}</h2>
                           </header>'''.format(authorLink, author, documentName)
             
-            documentPath = os.path.join(dataDir, "{}/{}".format(author, document))
+            documentPath = os.path.join(dataDir, "{}/{}".format(author, documentName))
             with open(documentPath, "r", encoding='utf-8-sig') as f:                
                 textContent = f.read()
                 f.close()
@@ -189,7 +189,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
             f.close()
     authorIndex.extend(['</div>', '</main>', postMainHtml])
     authorIndexHtml = "\n".join(authorIndex)
-    with open("authors/index.html", "w") as f:
+    with open("data/index.html", "w") as f:
         f.write(authorIndexHtml)
         f.close()
 
