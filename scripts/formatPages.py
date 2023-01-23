@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", publicationsBaseUrl = "https://mabarber92.github.io/digital-publications", staticTemplate = None):
+def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", publicationsBaseUrl = "https://mabarber92.github.io/pubs", staticTemplate = None):
     import os
     import re
     import urllib.request
@@ -127,7 +127,7 @@ def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "ht
         authorIndex.append(authorLinkHtml)
         for document in dirDict[author]:
             documentName = ".".join(document.split(".")[1:3])
-            documentPage = "{}/{}{}".format(publicationsBaseUrl, documentName, ".html")
+            documentPage = "{}/{}/{}{}".format(publicationsBaseUrl, author, documentName, ".html")
             
             documentLinkHtml = '''<h3 class="entry-title">
             <a href="{}" class="more-link">{}<span class="icon icon--arrow-right">
