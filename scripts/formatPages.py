@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", publicationsBaseUrl = "https://mabarber92.github.io/pubs", staticTemplate = None):
+def formatPages(pageToTemplate = "https://openiti.org/about.html", baseUrl = "https://openiti.org", publicationsBaseUrl = "https://openiti.org/pubs", staticTemplate = None):
     import os
     import re
     import urllib.request
